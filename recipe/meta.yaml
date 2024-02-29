@@ -1,5 +1,5 @@
 {% set name = "atomlite" %}
-{% set version = "4.4.0" %}
+{% set version = "4.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/atomlite-{{ version }}.tar.gz
-  sha256: 5ef95bfee976bc80347ef1f432f0107596e1c43f550e700803f0a4af1f7ffb8d
+  sha256: 21d9481c1d791b67cf49ea0a35476b47140f0df64dfd6eb7608767d65cb763fc
 
 build:
   noarch: python
