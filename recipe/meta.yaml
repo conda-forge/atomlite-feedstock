@@ -1,6 +1,6 @@
-{% set python_min = '3.11' %}
+{% set python_min = "3.11" %}
 {% set name = "atomlite" %}
-{% set version = "4.4.5" %}
+{% set version = "4.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,12 +8,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/atomlite-{{ version }}.tar.gz
-  sha256: d5d75b8d885f7ceda3e16c91ea8503bd1192053e9855fe7c8b610eaef20762d1
+  sha256: 5ec67dac050a464dad059aac008cbb0ac16b49c53d1a192739709580b2ba9676
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -23,7 +23,7 @@ requirements:
     - pip
   run:
     - python >={{ python_min }}
-    - rdkit
+    - rdkit >=2024.9.6
     - polars
 
 test:
