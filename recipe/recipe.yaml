@@ -1,0 +1,46 @@
+schema_version: 1
+
+context:
+  python_min: "3.11"
+  name: atomlite
+  version: "4.5.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/atomlite-${{ version }}.tar.gz
+  sha256: 5ec67dac050a464dad059aac008cbb0ac16b49c53d1a192739709580b2ba9676
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - setuptools
+    - setuptools-scm
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - rdkit >=2024.9.6
+    - polars
+
+tests:
+  - python:
+      imports:
+        - atomlite
+      pip_check: false
+      python_version: ${{ python_min }}
+about:
+  summary: A SQLite chemical database.
+  license: MIT
+  license_file: LICENSE
+  homepage: https://github.com/lukasturcani/atomlite
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
